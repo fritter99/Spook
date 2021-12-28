@@ -1,2 +1,2 @@
-# **GUI for predicting the fire limit of concrete filled steel tube columns
+# __GUI for predicting the fire limit of concrete filled steel tube columns__
 ## 
