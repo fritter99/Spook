@@ -10,25 +10,27 @@ import numpy as np
 from qt_material import apply_stylesheet
 from PyQt5.QtWebEngineWidgets import *
 
-from codeFormulas.Zha import *
-from codeFormulas.Han import *
-from codeFormulas.Eurocode import *
-from codeFormulas.Japan import *
-from codeFormulas.America import *
+from Zha import *
+from Han import *
+from Eurocode import *
+from Japan import *
+from America import *
 import xgboost as xgb
 import pandas as pd
 import numpy as np
 
-model = xgb.Booster(model_file="hybridModel\\FrrModel_1030")
+model = xgb.Booster(model_file=r"D:\Work Studio\Jupyter\FrrModel_1030")
 
 class MainWindow(QMainWindow,Ui_MainWindow):
     def __init__(self, parent=None):
         super(MainWindow, self).__init__(parent)
+        
         self.setupUi(self)
         self.setWindowFlags(Qt.FramelessWindowHint)
         self.setWindowTitle('Spook')
-        #self.setWindowIcon(QIcon('cat.jpg'))
+        self.setWindowIcon(QIcon('cat.jpg'))
         
+
     #Zha's
     @pyqtSlot()
     def on_pushButton_zha_clicked(self):
@@ -70,7 +72,7 @@ class MainWindow(QMainWindow,Ui_MainWindow):
 
         h=HanFrr(D,t,L,fy,fc,FRR,is_circular,bc)
         h.get_NfiRd()
-        load=z.NfiRd
+        load=h.NfiRd
         self.lineEdit_Load_han.setText(str(int(load)))
 
     #Eurocode
@@ -161,7 +163,7 @@ window = MainWindow()
 
 # setup stylesheet
 apply_stylesheet(app, theme='dark_teal.xml')
-#app.setStyleSheet(qdarkstyle.load_stylesheet_pyqt5())
+app.setStyleSheet(qdarkstyle.load_stylesheet_pyqt5())
 # or in new API
 #app.setStyleSheet(qdarkstyle.load_stylesheet(qt_api='pyqt5'))
 window.show()
