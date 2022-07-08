@@ -19,7 +19,7 @@ import xgboost as xgb
 import pandas as pd
 import numpy as np
 
-model = xgb.Booster(model_file=r"D:\Work Studio\Jupyter\FrrModel_1030")
+model = xgb.Booster(model_file=r"D:\Work Studio\Jupyter\FrrModel_0620")
 
 class MainWindow(QMainWindow,Ui_MainWindow):
     def __init__(self, parent=None):
